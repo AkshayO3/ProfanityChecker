@@ -170,8 +170,6 @@ public class ProfanityAnalysisServiceImpl implements ProfanityAnalysisService {
     }
 
 
-
-
     // moderation summary
     private String createModerationSummaryPrompt(AnalysisResult analysisResult) {
         AtomicBoolean isAnyCategoryFlagged = new AtomicBoolean(false);
@@ -204,10 +202,13 @@ public class ProfanityAnalysisServiceImpl implements ProfanityAnalysisService {
 
     // Utility method to convert MultipartFile to File
     private File convertToFile(MultipartFile multipartFile) throws IOException {
+
         File convFile = new File(multipartFile.getOriginalFilename());
         FileOutputStream fos = new FileOutputStream(convFile);
+
         fos.write(multipartFile.getBytes());
         fos.close();
+
         return convFile;
     }
 }
